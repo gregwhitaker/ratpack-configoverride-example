@@ -1,10 +1,7 @@
 package com.github.gregwhitaker.ratpack.example;
 
-import com.github.gregwhitaker.ratpack.example.api.ApiModule;
-import com.github.gregwhitaker.ratpack.example.api.Endpoints;
-import com.github.gregwhitaker.ratpack.example.core.config.MessagesConfiguration;
-import com.github.gregwhitaker.ratpack.example.services.ServicesModule;
-import ratpack.guice.Guice;
+import com.github.gregwhitaker.ratpack.example.core.config.DatabaseConfiguration;
+import ratpack.jackson.Jackson;
 import ratpack.server.BaseDir;
 import ratpack.server.RatpackServer;
 
@@ -18,14 +15,12 @@ public class Main {
                 .serverConfig(c -> c
                         .env()
                         .yaml("config.yaml")
-                        .require("/messages", MessagesConfiguration.class)
+                        .require("/database", DatabaseConfiguration.class)
                         .baseDir(BaseDir.find()).build())
-                .registry(Guice.registry(b -> b
-                        .module(ApiModule.class)
-                        .module(ServicesModule.class))
-                )
                 .handlers(chain -> chain
-                        .insert(Endpoints.class)
+                        .get("config", ctx -> {
+                            ctx.render(Jackson.json(ctx.get(DatabaseConfiguration.class)));
+                        })
                 )
         );
     }

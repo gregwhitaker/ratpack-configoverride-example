@@ -23,5 +23,5 @@ dependencies {
     runtime 'org.slf4j:slf4j-simple:1.7.22'
 }
 
-mainClassName = 'com.github.gregwhitaker.ratpackrxjdbc.example.Main'
+mainClassName = 'com.github.gregwhitaker.ratpack.example.Main'
 

@@ -1,3 +1,6 @@
-messages:
-  message1: "This is message1 from config.yaml"
-  message2: "This is message2 from config.yaml"
+database:
+  host: localhost
+  port: 5432
+  username: postgres
+  password: postgres
+
