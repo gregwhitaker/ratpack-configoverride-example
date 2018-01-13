@@ -3,9 +3,43 @@
 An example of layering configuration mechanisms in [Ratpack](https://www.ratpack.io).
 
 ## Running the Example
-The example can be run using the following Gradle command:
+1. Start the example application by running the following command:
 
-    $ ./gradlew run
+        $ ./gradlew run
+        
+2. Run the following curl command to retrieve the current database configuration:
+
+        $ curl http://localhost:5050/config
+        
+    You should see the following:
+    
+        {
+          "host": "localhost",
+          "port": 5432,
+          "username": "postgres",
+          "password": "postgres",
+          "database": "mydb"
+        }
+
+3. Stop the application.
+
+4. Now assume that we want to override the default database port at runtime via environment variables. Start the application using the following command:
+
+        $ RATPACK_DATABASE__PORT=8001 ./gradlew run
+        
+5. Run the curl command again to retrieve the current database configuration:
+
+        $ curl http://localhost:5050/config
+        
+    Note that the default port has been overridden with `8001`:
+    
+        {
+          "host": "localhost",
+          "port": 8001,
+          "username": "postgres",
+          "password": "postgres",
+          "database": "mydb"
+        }
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/ratpack-configoverride-example/issues).
