@@ -2,6 +2,9 @@
 
 An example of layering configuration mechanisms in [Ratpack](https://www.ratpack.io).
 
+This example starts a simple Ratpack application that loads a default database configuration from `config.yaml`. The default 
+database configuration can be overridden by setting environment variables.
+
 ## Running the Example
 1. Start the example application by running the following command:
 
