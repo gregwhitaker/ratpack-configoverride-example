@@ -1,4 +1,5 @@
 # ratpack-configoverride-example
+[![Build Status](https://travis-ci.org/gregwhitaker/ratpack-configoverride-example.svg?branch=master)](https://travis-ci.org/gregwhitaker/ratpack-configoverride-example)
 
 An example of layering configuration mechanisms in [Ratpack](https://www.ratpack.io).
 
