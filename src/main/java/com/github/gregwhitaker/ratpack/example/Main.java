@@ -12,8 +12,8 @@ public class Main {
     public static void main(String... args) throws Exception {
         RatpackServer.start(s -> s
                 .serverConfig(c -> c
-                        .yaml("config.yaml")
-                        .env()
+                        .yaml("config.yaml")  // Pulls configuration from config.yaml file
+                        .env()  // Pulls configuration from environment variables
                         .require("/database", DatabaseConfiguration.class)
                         .baseDir(BaseDir.find()).build())
                 .handlers(chain -> chain
